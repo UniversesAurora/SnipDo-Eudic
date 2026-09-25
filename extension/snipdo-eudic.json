@@ -1,0 +1,20 @@
+{
+  "name": "Eudic",
+  "identifier": "universesaurora.snipdo.eudic",
+  "icon": "icon.png",
+  "extensionTranslations": {
+    "en": "Eudic",
+    "zh": "欧路词典"
+  },
+  "actions": [
+    {
+      "title": "Look up in Eudic",
+      "icon": "icon.png",
+      "powershellFile": "main.ps1",
+      "actionTranslations": {
+        "en": "Look up in Eudic",
+        "zh": "欧路查词"
+      }
+    }
+  ]
+}

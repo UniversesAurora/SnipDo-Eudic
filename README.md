@@ -17,7 +17,7 @@
 
 ## 工作原理
 
-SnipDo 把选中文字作为 `$PLAIN_TEXT` 传给 [main.ps1](./extension/main.ps1)。这个入口是完整的单文件脚本，不使用 `$PSScriptRoot`，因为 SnipDo 在某些版本中会把脚本内容放进自己的 PowerShell 运行环境执行，此时 `$PSScriptRoot` 为空。脚本把文字编码为 UTF-8 URL 路径段，再调用欧路：
+SnipDo 把选中文字作为 `$PLAIN_TEXT` 传给 [main.ps1](./extension/main.ps1)。这个入口是完整的单文件脚本，不使用 `$PSScriptRoot` 或嵌套函数参数声明，因为 SnipDo 的脚本编辑器会在自己的 PowerShell 运行环境中处理这些内容。脚本把文字编码为 UTF-8 URL 路径段，再调用欧路：
 
 ```text
 eudic.exe "eudic://cap-dict/<encoded-text>"

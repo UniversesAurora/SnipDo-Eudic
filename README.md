@@ -2,12 +2,12 @@
 
 在 SnipDo 中选中文字，点击“欧路查词”，使用欧路词典的原生划词浮窗显示释义。无需欧路自身的划词监听。
 
-适用于 Windows、SnipDo 和欧路词典。已在 SnipDo 3.0.87.0 与 Microsoft Store 版欧路词典 26.9.1.0 上验证。
+适用于 Windows、SnipDo 和欧路词典。桥接逻辑曾在 SnipDo 3.0.87.0 与 Microsoft Store 版欧路词典 26.9.1.0 上验证；本次修订后的扩展包尚未在 SnipDo 中点击测试。
 
 ## 安装
 
 1. 安装并启动 [SnipDo](https://snipdo-app.com/) 和欧路词典。
-2. 下载本仓库的 [SnipDo-Eudic.pbar](./SnipDo-Eudic.pbar)，双击导入 SnipDo。
+2. 下载本仓库的 [SnipDo-Eudic.pbar](./SnipDo-Eudic.pbar)，双击导入 SnipDo。已经导入旧版的电脑，请先在 **Text extensions** 中删除旧的“欧路查词”，再导入新版，避免旧入口继续运行。
 3. 在 SnipDo 的 **Settings → Text extensions** 中确认“欧路查词”已启用，并拖到方便点击的位置。
 4. 在欧路词典中关闭 **开启划词翻译功能**。如果不使用“双击 Ctrl+C 取词”或“剪贴板取词”，也将它们关闭。
 
@@ -17,7 +17,7 @@
 
 ## 工作原理
 
-SnipDo 把选中文字作为 `$PLAIN_TEXT` 传给 [main.ps1](./extension/main.ps1)。桥接脚本把文字编码为 UTF-8 URL 路径段，再调用欧路：
+SnipDo 把选中文字作为 `$PLAIN_TEXT` 传给 [main.ps1](./extension/main.ps1)。这个入口是完整的单文件脚本，不使用 `$PSScriptRoot`，因为 SnipDo 在某些版本中会把脚本内容放进自己的 PowerShell 运行环境执行，此时 `$PSScriptRoot` 为空。脚本把文字编码为 UTF-8 URL 路径段，再调用欧路：
 
 ```text
 eudic.exe "eudic://cap-dict/<encoded-text>"
@@ -26,6 +26,8 @@ eudic.exe "eudic://cap-dict/<encoded-text>"
 `cap-dict` 是当前 Windows 版欧路可用的内部入口；欧路尚未公开保证它在未来版本保持兼容。脚本会优先使用已经运行的欧路程序路径，随后查找 Microsoft Store 包及常见安装位置，因此欧路更新后通常不需要改路径。
 
 桥接本身不会模拟按键，也不会读取或改写剪贴板。它保留文本内部的空格、换行、中文和标点；极长文本会报错，不会静默截断。运行错误会写入 `%LOCALAPPDATA%\EudicSnipDo\bridge.log`；日志不含选中文字。
+
+扩展的单色书本图标取自 [SnipDo 官方 Dictionary 扩展](https://snipdo-app.com/wp-content/uploads/2023/09/Dictionary.pbar)；彩色图标使用欧路词典程序图标。
 
 ## 手动调试
 
@@ -39,4 +41,4 @@ eudic.exe "eudic://cap-dict/<encoded-text>"
 
 ## 重新打包
 
-`.pbar` 是 ZIP 格式的 SnipDo 扩展包。将 `extension` 目录中的文件压缩在归档根目录，并把扩展名改成 `.pbar`。不要把 `extension` 文件夹本身包在归档的第一层。
+`.pbar` 是 ZIP 格式的 SnipDo 扩展包。将 `extension` 目录中的 `main.ps1`、`snipdo-eudic.json`、`book.svg` 和 `icon.png` 压缩在归档根目录，并把扩展名改成 `.pbar`。不要把 `extension` 文件夹本身包在归档的第一层。

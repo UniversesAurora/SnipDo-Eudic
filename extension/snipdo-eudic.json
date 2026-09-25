@@ -1,21 +1,21 @@
 {
-  "name": "Eudic v2",
+  "name": "Eudic",
   "identifier": "universesaurora.snipdo.eudic.v2",
   "icon": "book.svg",
   "icon_colored": "icon.png",
   "extensionTranslations": {
-    "en": "Eudic v2",
-    "zh": "欧路词典 v2"
+    "en": "Eudic",
+    "zh": "欧路词典"
   },
   "actions": [
     {
-      "title": "Look up in Eudic v2",
+      "title": "Look up in Eudic",
       "icon": "book.svg",
       "icon_colored": "icon.png",
       "powershellFile": "main.ps1",
       "actionTranslations": {
-        "en": "Look up in Eudic v2",
-        "zh": "欧路查词 v2"
+        "en": "Look up in Eudic",
+        "zh": "欧路查词"
       }
     }
   ]

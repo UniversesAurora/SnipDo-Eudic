@@ -1,17 +1,17 @@
 # SnipDo → 欧路词典划词浮窗
 
-在 SnipDo 中选中文字，点击“欧路查词 v2”，使用欧路词典的原生划词浮窗显示释义。无需欧路自身的划词监听。
+在 SnipDo 中选中文字，点击“欧路查词”，使用欧路词典的原生划词浮窗显示释义。无需欧路自身的划词监听。
 
 适用于 Windows、SnipDo 和欧路词典。桥接逻辑曾在 SnipDo 3.0.87.0 与 Microsoft Store 版欧路词典 26.9.1.0 上验证；本次修订后的扩展包尚未在 SnipDo 中点击测试。
 
 ## 安装
 
 1. 安装并启动 [SnipDo](https://snipdo-app.com/) 和欧路词典。
-2. 下载本仓库的 [SnipDo-Eudic-v2.pbar](./SnipDo-Eudic-v2.pbar)，双击导入 SnipDo。v2 使用新的扩展 ID 和文件名，以避开旧版本的导入缓存。
-3. 在 SnipDo 的 **Settings → Text extensions** 中禁用或删除旧的“欧路查词”，确认新的“欧路查词 v2”已启用，并拖到方便点击的位置。
+2. 下载本仓库的 [SnipDo-Eudic.pbar](./SnipDo-Eudic.pbar)，双击导入 SnipDo。
+3. 在 SnipDo 的 **Settings → Text extensions** 中禁用或删除旧扩展，确认新的“欧路查词”已启用，并拖到方便点击的位置。
 4. 在欧路词典中关闭 **开启划词翻译功能**。如果不使用“双击 Ctrl+C 取词”或“剪贴板取词”，也将它们关闭。
 
-选中一个单词后点击 SnipDo 工具栏上的“欧路查词 v2”即可。建议在 SnipDo 的 **Show when** 中启用 **Doubleclick** 和 **Mouse drag**，关闭不需要的 **Ctrl+C / Ctrl+X / Ctrl+A** 触发项。在 SnipDo 全局设置中关闭 **Always copy when selecting text**，以免每次选词都改写剪贴板。
+选中一个单词后点击 SnipDo 工具栏上的“欧路查词”即可。建议在 SnipDo 的 **Show when** 中启用 **Doubleclick** 和 **Mouse drag**，关闭不需要的 **Ctrl+C / Ctrl+X / Ctrl+A** 触发项。在 SnipDo 全局设置中关闭 **Always copy when selecting text**，以免每次选词都改写剪贴板。
 
 如果 SnipDo 没有关联 `.pbar` 文件，可在 SnipDo 的扩展导入入口选取该文件。扩展源文件位于 [extension](./extension/)。
 
